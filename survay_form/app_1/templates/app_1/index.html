@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+    <form action='/process' method='post'>
+        {% csrf_token %}
+        <p>Your Name: <input type="text" name="name"></p>
+        <p>Dojo Location:
+            <select name='location'>
+                <option>Seattle</option>
+                <option>DC</option>
+                <option>San Francisco</option>
+            </select>
+        </p>
+        <p>Favorite Language:
+            <select name='language'>
+            <option>Java</option>
+            <option>Java Script</option>
+            <option>Python</option>
+            </select>
+        </p>
+           <p> Comment (optional):</p>
+           <textarea name='comment'></textarea>
+    
+        <input type="submit">
+
+    </form>
+</fieldset>
+</body>
+</html>

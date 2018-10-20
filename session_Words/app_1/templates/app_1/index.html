@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .blue { color: blue; }
+            .red { color: red }
+            .green {color: green; }
+            .large { font-size: 2rem; }
+        </style>
+</head>
+<body>
+    <fieldset>
+        <h1>Add a New word</h1>
+        <form action='/add' method='post'>
+            {% csrf_token %}
+            <input type='text' name='word'> <br>
+            <h3> Choose color </h3>
+            <input type="radio" name="color" value="red" checked> Red<br>
+            <input type="radio" name="color" value="green"> Green<br>
+            <input type="radio" name="color" value="blue"> Blue <br>
+            <input type="checkbox" name='font' value='large'> show in BIG fonts!<br>
+            <input type="submit" value="Add to session">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            <h3>Here are your words!</h3>
+        </legend>
+        <a href="/clear">[clear]</a>
+        {% for word in request.session.words %}
+            <p><span class="{{word.color}} {{word.font}}">{{ word.word }}</span> - added on {{ word.time }}</p>
+        {% endfor %}
+    </fieldset>
+</body>
+</html>
